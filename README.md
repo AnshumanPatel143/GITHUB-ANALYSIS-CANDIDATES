@@ -13,6 +13,11 @@ Simply enter a GitHub username and get instant analysis in under 2 minutes!
 
 A comprehensive tool that analyzes GitHub profiles from a recruiter's perspective and provides actionable recommendations to help developers create standout portfolios.
 
+## DEMO VIDEO
+https://screenrec.com/share/Q6CklArZ8q
+Open in Browser 
+Sorry for low video quality and my microphone is not working with this website.
+
 
 
 ## 🎯 Problem Statement
