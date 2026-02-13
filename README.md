@@ -1,3 +1,9 @@
+## 🚀 Live Demo
+
+https://analysiscandidates.netlify.app/
+
+Simply enter a GitHub username and get instant analysis in under 2 minutes!
+
 # 🚀 GitHub Portfolio Analyzer & Enhancer
 
 > Turn Repositories into Recruiter-Ready Proof
@@ -7,11 +13,7 @@
 
 A comprehensive tool that analyzes GitHub profiles from a recruiter's perspective and provides actionable recommendations to help developers create standout portfolios.
 
-## 📹 Demo Video
 
-https://github.com/user-attachments/assets/your-demo-video-here.mp4
-
-*A screen recording demonstrating the live, working project will be added here.*
 
 ## 🎯 Problem Statement
 
@@ -61,11 +63,7 @@ Each recommendation includes:
 - Expected impact
 - Specific action steps
 
-## 🚀 Live Demo
 
-**Try it now:** [Live Demo Link](#) *(Will be hosted)*
-
-Simply enter a GitHub username and get instant analysis in under 2 minutes!
 
 ## 💻 Tech Stack
 
@@ -259,12 +257,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## 🏆 Hackathon Submission
-
-**Event:** UnsaidTalks Hackathon 2026  
-**Problem Statement:** GitHub Portfolio Analyzer & Enhancer  
-**Submission Date:** February 13, 2026  
-**Team:** [Your Name/Team Name]
 
 ### Evaluation Criteria Alignment
 
@@ -276,19 +268,7 @@ SOFTWARE.
 
 ## 📞 Contact & Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/github-portfolio-analyzer/issues)
-- **Email:** your.email@example.com
-- **UnsaidTalks:** info@unsaidtalks.com
+
 
 ## 🙏 Acknowledgments
-
-- UnsaidTalks Education for organizing the hackathon
-- GitHub API for providing comprehensive data
-- The developer community for inspiration
-
----
-
-**Built with ❤️ for developers, by developers**
-
-*Making GitHub profiles recruiter-ready, one analysis at a time.*
 
