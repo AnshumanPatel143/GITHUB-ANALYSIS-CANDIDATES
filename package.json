@@ -1,0 +1,33 @@
+{
+  "name": "github-portfolio-analyzer",
+  "version": "1.0.0",
+  "description": "Turn Repositories into Recruiter-Ready Proof - A comprehensive GitHub profile analyzer",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "test": "echo \"No automated tests configured yet\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/github-portfolio-analyzer.git"
+  },
+  "keywords": [
+    "github",
+    "portfolio",
+    "analyzer",
+    "recruiter",
+    "developer-tools",
+    "career",
+    "hackathon",
+    "unsaidtalks"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/github-portfolio-analyzer/issues"
+  },
+  "homepage": "https://github.com/yourusername/github-portfolio-analyzer#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}

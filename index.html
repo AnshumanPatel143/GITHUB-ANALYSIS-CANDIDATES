@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Portfolio Analyzer - Turn Repositories into Recruiter-Ready Proof</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#6366f1"/>
+                    <path d="M20 10L25 15L20 20L15 15L20 10Z" fill="white"/>
+                    <path d="M20 20L25 25L20 30L15 25L20 20Z" fill="white" opacity="0.6"/>
+                </svg>
+                <h1>GitHub Portfolio Analyzer</h1>
+            </div>
+            <p class="tagline">Turn Repositories into Recruiter-Ready Proof</p>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h2>Analyze Your GitHub Profile</h2>
+                <p>Get instant feedback on how recruiters view your profile and actionable steps to improve</p>
+                
+                <div class="input-section">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="githubUrl" 
+                            placeholder="Enter GitHub username (e.g., torvalds)"
+                            aria-label="GitHub username"
+                        >
+                        <button id="analyzeBtn" class="btn-primary">
+                            <span class="btn-text">Analyze Profile</span>
+                            <span class="btn-loader"></span>
+                        </button>
+                    </div>
+                    <p class="input-hint">Just enter the username, not the full URL</p>
+                </div>
+            </section>
+
+            <div id="loadingSection" class="loading-section hidden">
+                <div class="loading-card">
+                    <div class="spinner"></div>
+                    <h3>Analyzing Your GitHub Portfolio</h3>
+                    <p id="loadingStatus">Fetching profile data...</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-section hidden">
+                <div class="error-card">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <h3>Analysis Failed</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn-secondary" onclick="resetAnalyzer()">Try Again</button>
+                </div>
+            </div>
+
+            <div id="resultsSection" class="results-section hidden">
+                <!-- Overall Score Card -->
+                <div class="score-hero">
+                    <div class="score-circle">
+                        <svg class="score-ring" viewBox="0 0 200 200">
+                            <circle class="score-ring-bg" cx="100" cy="100" r="90"></circle>
+                            <circle class="score-ring-progress" cx="100" cy="100" r="90" id="scoreCircle"></circle>
+                        </svg>
+                        <div class="score-value">
+                            <span id="overallScore" class="score-number">0</span>
+                            <span class="score-total">/100</span>
+                        </div>
+                    </div>
+                    <div class="score-details">
+                        <h2 id="scoreTitle">Your GitHub Score</h2>
+                        <p id="scoreDescription"></p>
+                        <div class="score-badges">
+                            <span class="badge" id="scoreBadge"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Summary -->
+                <div class="profile-summary card">
+                    <h3>Profile Overview</h3>
+                    <div class="profile-grid">
+                        <div class="profile-item">
+                            <img id="profileAvatar" src="" alt="Profile" class="avatar">
+                            <div>
+                                <h4 id="profileName"></h4>
+                                <p id="profileBio"></p>
+                            </div>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value" id="repoCount">0</span>
+                                <span class="stat-label">Repositories</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="followerCount">0</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="followingCount">0</span>
+                                <span class="stat-label">Following</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scoring Breakdown -->
+                <div class="scoring-breakdown card">
+                    <h3>Detailed Analysis</h3>
+                    <div id="scoreMetrics" class="metrics-grid"></div>
+                </div>
+
+                <!-- Top Repositories -->
+                <div class="top-repos card">
+                    <h3>Your Top Repositories</h3>
+                    <div id="topReposList" class="repos-list"></div>
+                </div>
+
+                <!-- Strengths -->
+                <div class="strengths card">
+                    <h3>
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Your Strengths
+                    </h3>
+                    <ul id="strengthsList" class="insights-list"></ul>
+                </div>
+
+                <!-- Red Flags -->
+                <div class="red-flags card">
+                    <h3>
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        Areas for Improvement
+                    </h3>
+                    <ul id="redFlagsList" class="insights-list"></ul>
+                </div>
+
+                <!-- Actionable Recommendations -->
+                <div class="recommendations card">
+                    <h3>
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                        Actionable Recommendations
+                    </h3>
+                    <div id="recommendationsList" class="recommendations-list"></div>
+                </div>
+
+                <!-- Language Distribution -->
+                <div class="languages card">
+                    <h3>Language Distribution</h3>
+                    <div id="languageChart" class="language-chart"></div>
+                </div>
+
+                <!-- Activity Timeline -->
+                <div class="activity card">
+                    <h3>Commit Activity</h3>
+                    <div id="activityTimeline" class="activity-timeline"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="actions">
+                    <button class="btn-primary" onclick="window.print()">Download Report</button>
+                    <button class="btn-secondary" onclick="resetAnalyzer()">Analyze Another Profile</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built for UnsaidTalks Hackathon 2026 | Helping developers become recruiter-ready</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
